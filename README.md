@@ -24,11 +24,15 @@ This sprint challenge is divided up into three parts:  Hash tables coding, block
 
 Explain in detail the workings of a dynamic array:
 * What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
+# To access an array, since we can acess it by index, the time complexity is O(1), if we want to add/delete from the front of the array, it will be O(n) since when we add we need to shift over all the elements in it to make space for it, as where deleting, we would need to shift over all elements to occupy the space of the deleted element. But adding and removing from the head it's O(1) since no shifting is needed.
 * What is the worse case scenario if you try to extend the storage size of a dynamic array?
-
+# Worst case scenario of it would be O(n) since to increase it size, it needs to make a copy of the old array with a higher capacity, and iterating over the old array, passing each individual element to it's respective index.
 Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
- 
+# The structure of a blockchain is, as the name says, it's a chain of blocks, and each block has data, a hash, and a previous hash that should match primary hash of the previous block, so the hash is the chain that connects the blocks with each other.
 Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+# I believe an attack would be futile and would take a ridiculous amount of computation, changing any of the block info and sucessfully meeting the requirements needed to assert a correct proof it's an almost impossible task. If any block would be tampered, the hash of that block with completely change, there for the next block's prev hash pointing to that block will no longer match, and the chain will break.
+# With proof of work, the node will verify if the requirements, such as making sure the hash has 4 leading zeros as an example, and if it does, it proves that it's legitimate.
+# If an attack would be possible, the only thing I can thing is, if we have a chain of 5 blocks, with id's 1, 2, 3, 4, 5, and the 2 block got tampered with, it would only be possible by removing the next nodes, 3,4 and 5, since there will be no hash check to make sure it connects to the tampered one, and mining the again with matching hashes.
 
 ## Project Set Up
 
