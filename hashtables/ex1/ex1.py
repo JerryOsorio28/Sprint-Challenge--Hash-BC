@@ -6,10 +6,7 @@ from hashtables import (HashTable,
 
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
-    # weights = [ 4, 6, 10, 15, 16 ]
-    # length = 5
-    # limit = 21
-    # # output: [ 3, 1 ]
+    
     for i in range(len(weights)):
         hash_table_insert(ht, weights[i], i)
         
