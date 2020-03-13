@@ -13,26 +13,41 @@ class Ticket:
 
 def reconstruct_trip(tickets, length):
     hashtable = HashTable(length)
-    route = [None] * length
+    route = []
 
+    """
+    YOUR CODE HERE
+    """
     for i in range(length):
         hash_table_insert(hashtable, tickets[i].source, tickets[i].destination)
     
-    # check if there is a ticket in the hashtable with the source None
-    for i in range(length):
-        if hashtable.storage[i].key == 'NONE':
+    i = 0
+    while len(route) < len(hashtable.storage):
+        if i >= 10:
+            i = 0
+        if hashtable.storage[i] is None:
+            i += 1
+            continue
+        elif hashtable.storage[i].key == 'NONE' and hashtable.storage[i].value not in route:
             route.append(hashtable.storage[i].value)
-            route.pop(0)
-        if hashtable.storage[i].key in route:
-            route.append(hashtable.storage[i].value)
-            route.pop(0)
-            
+            i += 1
+            continue
+
+        node = hashtable.storage[i]
+        while node is not None:
+            if node.key in route and node.value not in route:
+                route.append(node.value)
+                break
+            node = node.next
+        i += 1
+
     for i in route:
         if i == 'NONE':
             route.pop(route.index('NONE'))
 
-    print(route)
+    # print('route', route)
     return route
+
     
     # print(hashtable.storage)
 
