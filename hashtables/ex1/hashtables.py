@@ -17,6 +17,9 @@ class HashTable:
     def __init__(self, capacity):
         self.capacity = capacity
         self.storage = [None] * capacity
+    
+    def __repr__(self):
+        return f'{self.storage}'
 
 
 # Hash int
